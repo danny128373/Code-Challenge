@@ -1,6 +1,6 @@
 # Tandem Trivia
 
-## About the Project:
+## About the Project
 
 Tandem Trivia is a console application developed for any user that enjoys trivia. Each round consists of 10 questions. Users will get their score at the end of the round.
 
@@ -10,7 +10,7 @@ Instructions to run Tandem Trivia locally:
 
 1. Clone Tandem Trivia by running the following command in your terminal: git clone https://github.com/danny128373/Code-Challenge.git
 
-1. Open project with your favorite IDE.
+1. Open Tandem Trivia using your favorite IDE.
 
 ## Built With
 
