@@ -1,5 +1,8 @@
 import os
-from play_trivia import play_trivia
+from play_trivia import PlayTrivia
+
+
+trivia = PlayTrivia()
 
 
 def build_menu():
@@ -19,7 +22,9 @@ def main_menu():
     choice = input(">> ")
     # Starts trivia game
     if choice == "1":
-        play_trivia()
+        # Clears the console
+        trivia.clear()
+        trivia.play_trivia()
     # If user didn't input 1 or 2, it calls this function again
     if choice != "2":
         main_menu()
