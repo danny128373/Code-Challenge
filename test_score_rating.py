@@ -1,17 +1,22 @@
-import io
 import unittest
-import unittest.mock
-
-from play_trivia import play_trivia
+from play_trivia import PlayTrivia
 
 
 class TestPlayTriva(unittest.TestCase):
+    def test_score_rating(self):
+        '''Tests when score is between 0 and 10'''
+        trivia = PlayTrivia()
+        self.assertEqual(trivia.score_rating(
+            8), f'You did great! Score: 8/10')
+        self.assertEqual(trivia.score_rating(
+            5), f'Were you even trying? Score: 5/10')
+        self.assertEqual(trivia.score_rating(
+            10), f'Perfect, best trivia player to ever roam this world! Score: 10/10')
 
-    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
-    def assert_stdout(self, expected_output, mock_stdout):
-        play_trivia(8)
-        self.assertEqual(mock_stdout.getvalue(), expected_output)
-
-    def test_only_numbers(self):
-        self.assert_stdout(
-            2, f'Perfect, best trivia player to ever roam this world! Score: {correct}/10')
+    def test_score_rating_values(self):
+        '''Tests to make sure errors are raise when necessary'''
+        trivia = PlayTrivia()
+        self.assertRaises(ValueError, trivia.score_rating, -1)
+        self.assertRaises(ValueError, trivia.score_rating, 11)
+        self.assertRaises(TypeError, trivia.score_rating, 'hello')
+        self.assertRaises(TypeError, trivia.score_rating, 5.5)

@@ -42,13 +42,17 @@ class PlayTrivia():
 
     def score_rating(self, correct):
         '''Depending on the user score, it displays the appropriate message'''
+        if not isinstance(correct, int):
+            raise TypeError('The score has to be an integer between 0 and 10.')
+        if correct < 0 or correct > 10:
+            raise ValueError('The score has to be between 0 and 10.')
         if correct == 10:
             return f'Perfect, best trivia player to ever roam this world! Score: {correct}/10'
-        elif correct > 7:
+        elif 7 < correct < 10:
             return f'You did great! Score: {correct}/10'
-        elif correct > 5:
+        elif 5 < correct < 7:
             return f'Not bad, not great. Score: {correct}/10'
-        else:
+        elif 0 <= correct < 7:
             return f'Were you even trying? Score: {correct}/10'
 
     def display_answer_choices(self, choices):
@@ -86,6 +90,3 @@ class PlayTrivia():
             except:
                 print(
                     'Incorrect input, enter the integer corresponding with your answer.')
-# TODO:
-# unit tests
-# readme Python 3.8
